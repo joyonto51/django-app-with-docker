@@ -19,3 +19,18 @@ blocks:
       prologue:
         commands:
           - python --version
+  - name: Test
+    task:
+      prologue:
+        commands:
+          - sem-version python 3.7
+          - checkout
+          - cache restore
+          - pip install --cache-dir .pip_cache -r requirements.txt
+      jobs:
+        - name: test app
+          commands:
+            - cd basic_auth
+            - python manage.py makemigrations
+            - python manage.py migrate
+            - python manage.py test
