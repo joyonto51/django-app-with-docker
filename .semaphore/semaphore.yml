@@ -19,7 +19,7 @@ blocks:
       prologue:
         commands:
           - python --version
-  - name: Test
+  - name: Unit Test
     task:
       prologue:
         commands:
@@ -34,3 +34,11 @@ blocks:
             - python manage.py makemigrations
             - python manage.py migrate
             - python manage.py test
+        - name: Check Warrnings
+          commands:
+            - cd basic_auth
+            - python manage.py check --deploy
+        - name: Check Style
+          commands:
+            - pip install flake8
+            - flak8 basic_auth/ --max-line-lenth=150
