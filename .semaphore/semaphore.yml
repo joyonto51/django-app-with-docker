@@ -41,4 +41,4 @@ blocks:
         - name: Check Style
           commands:
             - pip install flake8
-            - flake8 basic_auth/ --max-line-lenth=127
+            - flake8 basic_auth/ --max-line-length=127
